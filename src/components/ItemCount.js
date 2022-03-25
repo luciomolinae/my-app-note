@@ -7,7 +7,9 @@ const ItemCount = () =>{
     }
 
     const Reducir = () =>{
+        if (numero > 0){
         setNumero(numero - 1)
+    }
     }
     return(
         <>
