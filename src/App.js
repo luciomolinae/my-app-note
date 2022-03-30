@@ -7,9 +7,12 @@ function App() {
   return (
     <div>
       <NavBar/>
-      <ItemListContainer/>
+      <ItemListContainer greetings='Camisetas' />
     </div>
   );
 }
 
 export default App;
+
+
+  

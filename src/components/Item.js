@@ -1,26 +1,70 @@
-import React from 'react';
-import ItemCount from './ItemCount.js';
-import "./Card/Card.css";
+import { useState, useEffect } from "react";
 
 
+const Item = () => {
 
 
-const Item = ({ title, img, price, modelo, click }) => {
+  const mockProducts = [
+    {
+      id: 1,
+      name: "Real Madrid",
+      price: 2000,
+      modelo: "Titular",
+    },
+    {
+      id: 2,
+      name: "Inter de Milán",
+      price: 1000,
+      modelo: "Suplente",
+    },
+    {
+      id: 3,
+      name: "Tottenham",
+      price: 1000,
+      modelo: "Alternativa",
+    },
+    
+  ];
 
-  
-    return (
-        <div className="card">
-        <h1>{title}</h1>
-        <img src={img}></img>
-        <h2>${price}</h2>
-        <h3>Modelo: {modelo}</h3>
-        <h4>Compraste: {click}</h4>
-        <ItemCount/>
-    </div>
-    );
+  const [products, setdataProd] = useState([]);
+
+  const getProducts = () => {
+    return new Promise((resolve, reject) => {
+      return setTimeout(() => {
+        resolve(mockProducts);
+      }, 3000);
+    });
   };
+
+  useEffect(() => {
+    getProducts().then((dataProd) => {
+      setdataProd(dataProd);
+    });
+  }, []);
+
   
-  export default Item;
+  return (
+    <div className="cardExp">
+      <div className="imgCard">
+  
+      {products.map((product) => {
+        const {id, name, price, color} = product;
+        return (
+          <div>
+            <h2> {id} </h2>
+            <h2> {name}</h2>
+            <h2> $ {price} </h2>
+            <h2> Modelo {color}</h2>
+          </div>
+        );
+      })}
+      
+    </div>
+    </div>
+  );
+};
+
+export default Item;
 
 
   
