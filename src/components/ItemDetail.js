@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import ItemCount from "./ItemCount";
 
 
+
 const ItemDetail = () => {
 
     const mockItem = [
         {
-          id: 5,
+          id: 1,
           name: "Barcelona",
-          price: 2000,
+          price: 20000,
           modelo: "Titular",
+          details: "detalle camiseta",
           size: "L",
         },
     ];
@@ -50,12 +52,13 @@ const ItemDetail = () => {
                     <h2> $ {price} </h2>
                     <h2>  {modelo}</h2>
                     <h2>{size}</h2>
+                    <ItemCount stock={5} initial={1} onAdd={onAdd} />
                   </div>
                 );
               })}
 
            
-                <ItemCount stock={5} initial={1} onAdd={onAdd} />
+            
                
             
            

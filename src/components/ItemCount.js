@@ -19,7 +19,7 @@ const ItemCount = (prop) => {
   return (
     <>
       {stock < 1 ? (
-        <h2> No hay Stock</h2>
+        <h2> No hay Stock </h2>
       ) : (
         <div>
           <div className={"card"}>
@@ -27,7 +27,7 @@ const ItemCount = (prop) => {
             <button>{count}</button>
             <button onClick={removeProduct}>-</button>
             <button className="addCart" onClick={() => onAdd(count)}>
-              Agregar Compra
+              Agregar al Carro
             </button>
           </div>
         </div>

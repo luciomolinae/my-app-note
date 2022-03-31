@@ -1,18 +1,34 @@
 import React from 'react';
 import ItemListProducts from './ItemListProducts';
-import ItemDetail from './ItemDetail';
+import { useEffect, useState } from 'react';
+import mockProducts from '../data/mockProducts';
 
-const ItemListContainer = (props) => {
-  const {greetings} = props
-  
-      
-      return(
-            <div>
-          <h1>{greetings}</h1>
-          <ItemListProducts/>
-          <ItemDetail/>
-          </div>
-  
-      )
-  }
-  export default ItemListContainer;
+const ItemListContainer = () => {
+
+    const [products, setdataProd] = useState([]);
+
+  const getProducts = () => {
+    return new Promise((resolve, reject) => {
+      return setTimeout(() => {
+        resolve(mockProducts);
+        console.log(mockProducts)
+      }, 3000);
+    });
+  };
+
+  useEffect(() => {
+    getProducts().then((dataProd) => {
+      setdataProd(dataProd);
+    });
+  }, []);
+
+
+    
+    return(
+          <div>
+        <ItemListProducts prodListData= {products} />
+        </div>
+
+    )
+}
+export default ItemListContainer;
